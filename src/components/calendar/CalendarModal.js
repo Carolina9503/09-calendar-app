@@ -50,6 +50,7 @@ export const CalendarModal = () => {
 
 
     const closeModal = () => {
+      //TODO cerrar el modal
 
     }
   //manejo de fecha de inicio
@@ -85,6 +86,10 @@ export const CalendarModal = () => {
       if ( title.trim().length < 2 ) {
         return setTitleValid( false )
       }
+
+      //TODO Realizar grabacion en base de datos 
+      setTitleValid( true );
+      closeModal();
 
     }
 
