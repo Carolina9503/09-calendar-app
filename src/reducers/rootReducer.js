@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { calendarReducer } from "./calendarReducer";
 
 import { uiReducer } from './uiReducer';
 
@@ -6,6 +7,6 @@ import { uiReducer } from './uiReducer';
 //combinacion de todos mis reducer
 export const rootReducer = combineReducers({
      ui: uiReducer,
-     //TODO AuthReducer
+     calendar: calendarReducer,
      //TODO CalendarReducer
 })

@@ -7,8 +7,10 @@ import { Navbar } from '../ui/Navbar';
 import { CalendarEvent } from './CalendarEvent';
 import { messages } from '../../helpers/calendar-messages';
 import { CalendarModal } from './CalendarModal';
+import { AddNewFab } from '../ui/AddNewFab';
 
 import { uiOpenMOdal } from '../../actions/ui';
+import { eventSetActive } from '../../actions/events';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
@@ -42,7 +44,10 @@ export const CalendarScreen = () => {
     }
     
     const onSelectEvent = (e) => {
-        console.log(e);
+        // console.log(e);
+        dispatch( eventSetActive(e) );
+        dispatch( uiOpenMOdal() );
+
     }
     
     const onViewChange = (e) => {
@@ -87,6 +92,7 @@ export const CalendarScreen = () => {
                 }}
             />
 
+            <AddNewFab/>
             <CalendarModal/>
 
         </div>
