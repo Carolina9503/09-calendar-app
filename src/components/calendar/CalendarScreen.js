@@ -10,10 +10,11 @@ import { CalendarModal } from './CalendarModal';
 import { AddNewFab } from '../ui/AddNewFab';
 
 import { uiOpenMOdal } from '../../actions/ui';
-import { eventSetActive } from '../../actions/events';
+import { eventClearActiveEvent, eventSetActive } from '../../actions/events';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
+import { DeleteEventFab } from '../ui/DeleteEventFab';
 
 moment.locale('es');
 
@@ -23,7 +24,8 @@ export const CalendarScreen = () => {
 
     const dispatch = useDispatch();
     //TODO: Leer del store, los eventos 
-    const { events } = useSelector(state => state.calendar);
+    const { events, activeEvent } = useSelector(state => state.calendar);
+   
 
     const [lastView, setLastView] = useState( localStorage.getItem('lastview') || 'month' );
 
@@ -41,6 +43,11 @@ export const CalendarScreen = () => {
         setLastView(e);
         localStorage.setItem('lastview', e);
     
+    }
+
+    const onSelectSlot = (e) => {
+        console.log(e);//da las cordenadas con fechas de donde se hace click
+        dispatch( eventClearActiveEvent() );
     }
 
     const eventStyleGetter = ( event, start, end, isSelected ) => {
@@ -73,6 +80,8 @@ export const CalendarScreen = () => {
                 onDoubleClickEvent={ onDoubleClick }
                 onSelectEvent={ onSelectEvent }
                 onView={ onViewChange }
+                onSelectSlot={ onSelectSlot }//si hago click afuera debe de quitarle la seleccion al evento esto para el delete
+                selectable={ true }//para  que el onSelectSlot se llame debo de colocar esta linea
                 view={ lastView }
                 components={{
                     event: CalendarEvent
@@ -80,6 +89,10 @@ export const CalendarScreen = () => {
             />
 
             <AddNewFab/>
+
+            { ( activeEvent ) &&  <DeleteEventFab/> }
+           
+
             <CalendarModal/>
 
         </div>
