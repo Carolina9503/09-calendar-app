@@ -5,7 +5,7 @@ html, body {
 .calendar-screen{
     display: flex;
     flex-flow: column;
-    height: 100vh;
+    height: 88vh;
 }
 .rbc-calendar {
     height: 100%;

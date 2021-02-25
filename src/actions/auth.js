@@ -3,7 +3,7 @@ import { fetchConToken, fetchSinToken } from "../helpers/fetch"
 import { types } from "../types/types";
 
 
-// TODO asyncrono     
+// TODO asyncrono      
 export const startLogin = ( email, password ) => {
     return async( dispatch ) => { 
 
@@ -32,7 +32,7 @@ export const startLogin = ( email, password ) => {
         const resp = await fetchSinToken( 'auth/new', { name, email, password }, 'POST' );
         const body = await resp.json();
 
-        // console.log(body)
+        console.log(body)
 
         if ( body.ok ) {
             localStorage.setItem('token', body.token );
@@ -49,14 +49,14 @@ export const startLogin = ( email, password ) => {
 
     }
 }
-
+// tarea asyncrona 
 export const startChecking = () => {
     return async (dispatch) => {
         
         const resp = await fetchConToken( 'auth/renew' );
         const body = await resp.json();
 
-        console.log(body);
+        // console.log(body);
 
         if ( body.ok ) {
             localStorage.setItem( 'token', body.token );
@@ -68,7 +68,6 @@ export const startChecking = () => {
             }) )
              
         } else {
-            Swal.fire('Error', body.msg, 'error');
             dispatch( checkingFinish() );
         }
 
