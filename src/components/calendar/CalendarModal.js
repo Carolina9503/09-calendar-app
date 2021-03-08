@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventClearActiveEvent, eventUpdated } from '../../actions/events';
+import { eventClearActiveEvent, eventStartAddNew, eventUpdated } from '../../actions/events';
 
 
 const customStyles = {
@@ -113,13 +113,8 @@ export const CalendarModal = () => {
       }else {
 
         //TODO Realizar grabacion en base de datos
-        dispatch( eventAddNew({
+        dispatch( eventStartAddNew({
           ...formValues,
-          id: new Date().getTime(), //solo para generar Id temporal
-          user:{
-            _id: '123',
-            name: 'Carolina'
-          }
                  
         }));
       }

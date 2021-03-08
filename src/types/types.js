@@ -5,6 +5,9 @@ export const types = {
     uiCloseModal: '[ui] Close modal',
 
     eventSetActive: '[event] Set Active',
+
+
+    eventStartAddNew: '[event] Start add new',  //inicializacion de todo el proceso de grabacion
     eventAddNew: '[event] Add New',
     eventClearActiveEvent: '[event] Clear active event',
     eventUpdated: '[event] Event updated',
