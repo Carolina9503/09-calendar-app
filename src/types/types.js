@@ -1,7 +1,7 @@
 
 
 export const types = {
-    uiOpenModal: '[ui] Open modal',
+    uiOpenModal: '[ui] Open modal',  
     uiCloseModal: '[ui] Close modal',
 
     eventSetActive: '[event] Set Active',
@@ -12,6 +12,7 @@ export const types = {
     eventClearActiveEvent: '[event] Clear active event',
     eventUpdated: '[event] Event updated',
     eventDelated: '[event] Event deleted',
+    eventLoaded: '[event] Events loaded', //mostrar la informacion cuando ya la cargue
 
     // authChecking: '[auth] Checking login state',
     authCheckingFinish: '[auth] Finish checking login state',
